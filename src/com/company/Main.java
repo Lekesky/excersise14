@@ -13,17 +13,18 @@ import java.util.Arrays;
 
 public class Main {
 
+    static ArrayList<ToDoItems> toDoLists = new ArrayList<>();
+
     public static void main(String[] args) {
         serialize();
-//        deserialize();
+       deserialize();
     }
 
     static void serialize(){
         ToDoItems todo1 = new ToDoItems("Walk the dog", false, 0, 3, "dog");
         ToDoItems todo2 = new ToDoItems("Pay the bills", false, 1, 1, "bills");
 
-        ToDoList todoList = new ToDoList();
-        ArrayList<ToDoItems> toDoLists = new ArrayList<>();
+        ToDoList todoList = new ToDoList(toDoLists);
         toDoLists.add(todo1);
         toDoLists.add(todo2);
 
@@ -32,9 +33,7 @@ public class Main {
         Gson gson = new Gson();
         try{
             FileWriter writer = new FileWriter("data.json");
-            gson.toJson(todo1, writer);
-            System.getProperty("line.separator");
-            gson.toJson(todo2, writer);
+            gson.toJson(toDoLists, writer); //Put in arraylist
             writer.close();
 
         }catch (IOException e){
@@ -118,26 +117,48 @@ class ToDoItems{
     }
 }
 
-class ToDoList{
-    private ToDoItems todos;
+// class ToDoList{
+//     private ToDoItem[] todos;
 
-    public ToDoList(ToDoItems todos) {
+//     public ToDoList(ToDoItems todos) {
+//         this.todos = todos;
+//     }
+
+//     public ToDoItems getTodos() {
+//         return todos;
+//     }
+
+//     public void setTodos(ToDoItems todos) {
+//         this.todos = todos;
+//     }
+
+//     @Override
+//     public String toString() {
+//         return "ToDoList{" +
+//                 "todos=" + todos +
+//                 '}';
+//     }
+// }
+
+class ToDoList {
+    private ToDoList<> todos;
+
+    public ToDoList(ToDoList[] todos) {
         this.todos = todos;
     }
 
-    public ToDoItems getTodos() {
+    public ToDoList[] getTodos() {
         return todos;
     }
 
-    public void setTodos(ToDoItems todos) {
+    public void setTodos(ToDoList[] todos) {
         this.todos = todos;
     }
 
     @Override
     public String toString() {
         return "ToDoList{" +
-                "todos=" + todos +
+                "todos=" + Arrays.toString(todos) +
                 '}';
     }
 }
-
