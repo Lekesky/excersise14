@@ -16,15 +16,17 @@ public class Main {
     static ArrayList<ToDoItems> toDoLists = new ArrayList<>();
 
     public static void main(String[] args) {
+//       deserialize();
         serialize();
-       deserialize();
     }
 
     static void serialize(){
         ToDoItems todo1 = new ToDoItems("Walk the dog", false, 0, 3, "dog");
         ToDoItems todo2 = new ToDoItems("Pay the bills", false, 1, 1, "bills");
 
-        ToDoList todoList = new ToDoList(toDoLists);
+
+
+
         toDoLists.add(todo1);
         toDoLists.add(todo2);
 
@@ -140,25 +142,25 @@ class ToDoItems{
 //     }
 // }
 
-class ToDoList {
-    private ToDoList<> todos;
-
-    public ToDoList(ToDoList[] todos) {
-        this.todos = todos;
-    }
-
-    public ToDoList[] getTodos() {
-        return todos;
-    }
-
-    public void setTodos(ToDoList[] todos) {
-        this.todos = todos;
-    }
-
-    @Override
-    public String toString() {
-        return "ToDoList{" +
-                "todos=" + Arrays.toString(todos) +
-                '}';
-    }
-}
+//class ToDoList {
+//    private ToDoList<> todos;
+//
+//    public ToDoList(ToDoList[] todos) {
+//        this.todos = todos;
+//    }
+//
+//    public ToDoList[] getTodos() {
+//        return todos;
+//    }
+//
+//    public void setTodos(ToDoList[] todos) {
+//        this.todos = todos;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "ToDoList{" +
+//                "todos=" + Arrays.toString(todos) +
+//                '}';
+//    }
+//}
